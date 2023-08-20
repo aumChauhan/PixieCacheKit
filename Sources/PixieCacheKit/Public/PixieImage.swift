@@ -1,3 +1,9 @@
+//  PixieImage.swift
+//
+//  Author: Aum Chauhan
+//  Date: 20/8/2023
+//  GitHub: https://github.com/aum-chauhan-175
+
 import SwiftUI
 
 /// A SwiftUI view that fetches and displays an image from a URL with caching support.
