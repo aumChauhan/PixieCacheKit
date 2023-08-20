@@ -111,4 +111,4 @@ let cacheSize = PixieCacheManager.getCacheDirectorySize()
 
 ## License
 
-PixieCacheKit is released under the .
+PixieCacheKit is released under the [MIT License](LICENSE).
