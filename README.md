@@ -86,7 +86,7 @@ PixieImage("https://example.com/image.jpg", cacheKey: "uniqueKey") {
 }
 ```
 
-> NOTE : You can enhance your `PixieImage` view by using SwiftUI view modifiers.
+> **NOTE** : You can enhance your `PixieImage` view by using SwiftUI view modifiers.
 
 ## PixieCacheManager Functions
 
