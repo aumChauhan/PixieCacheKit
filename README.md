@@ -35,7 +35,7 @@ Then run `pod install` to install the framework.
 In Xcode, go to File -> Swift Packages -> Add Package Dependency and enter the repository URL:
 
 ```other
-https://github.com/your-repo-url-here
+https://github.com/aum-chauhan-175/PixieCacheKit.git
 ```
 
 ## Getting Started
