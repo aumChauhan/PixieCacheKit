@@ -5,10 +5,10 @@ Simplify image caching with PixieCacheKit.
 
 ## Features
 
-- **Flexible Caching Options:** Choose between memory-based caching or file-based caching, adapting to your app's requirements.
+- **Flexible Caching Options:** Choose between memory-based caching or file-based caching, adapting to your app requirements.
 - **Cache Management Functions:** Utilize built-in functions to manage cached data, including checking cache size and clearing cache when needed.
 - **Efficient Performance:** Enhance app performance by optimizing image loading times.
-- **Simple Integration:** Integrate PixieCacheKit seamlessly into your app with straightforward setup.
+- **Simple Integration:** Integrate PixieCacheKit seamlessly into your app with straight-forward setup.
 - **Smart Image Fetching:** Intelligently fetch images, reducing network requests and improving loading times.
 
 ## Requirements
@@ -40,8 +40,7 @@ https://github.com/aum-chauhan-175/PixieCacheKit.git
 
 ## Getting Started
 
-1. Import the framework: `import PixieCacheKit`.
-2. In SwiftUI App, first `import PixieCacheKit`, then configure your caching options using `PixieCacheKit`.
+- In SwiftUI App, first import the framework `import PixieCacheKit`, then configure your caching options using `PixieCacheKit.configure()`.
 
 Example:
 
@@ -73,7 +72,7 @@ struct MyApp: App {
 
 The `PixieImage` view simplifies image fetching, display, and caching in your iOS app. It provides two initializers to facilitate different use cases. This view takes an image URL and a cache key, allowing you to efficiently handle image data while benefiting from caching options.
 
-### Initializer 1: Fetch and Cache Image
+### Initializer 1: Fetch Image
 
 ```swift
 PixieImage("https://example.com/image.jpg", cacheKey: "uniqueKey")
