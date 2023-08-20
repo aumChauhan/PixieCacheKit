@@ -58,7 +58,7 @@ struct MyApp: App {
         // OR 
       
         // Use a specific memory limit for image caching.
-        // `PixieCacheKit.configure(memoryLimit: 100)`
+        PixieCacheKit.configure(memoryLimit: 100)
     }
 
     var body: some Scene {
