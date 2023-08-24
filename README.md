@@ -108,6 +108,27 @@ Retrieve the size of the cache directory using the `getCacheDirectorySize` funct
 let cacheSize = PixieCacheManager.getCacheDirectorySize()
 ```
 
+### Disable Debug Prints
+
+PixieCacheKit provides a function to disable debug prints during the image downloading and retrieval process. This can help improve the clarity of your code and reduce unnecessary output in your app's logs.
+
+```swift
+struct MyApp: App {
+    init() {
+        PixieCacheKit.configure(directoryName: "MyAppCache")
+        
+        // Disable debug prints
+        PixieCacheKit.disableDebugPrints()
+    }
+
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+        }
+    }
+}
+```
+
 ## License
 
 PixieCacheKit is released under the [MIT License](LICENSE).
