@@ -11,10 +11,15 @@ public struct PixieCacheKit {
     private init() { }
     
     /// Configure PixieCacheKit to use a custom directory for file-based image caching.
-    /// - Parameter directoryName: The name of the custom cache directory.
-    public static func configure(directoryName: String) {
+    /// - Parameters:
+    ///   - directoryName: The name of the custom cache directory.
+    ///   - imageFormat: Choose the image format (`.jpeg` & `.png`) for file manager caching.
+    public static func configure(directoryName: String, imageFormat: ImageFormat) {
         // Configuring directory name
         CacheManager.shared.cacheDirectoryName = directoryName
+        
+        // Configuring image format
+        CacheManager.shared.imageFormat = imageFormat
         
         // Configuring storage location.
         CacheManager.shared.storageLocation = .fileManager

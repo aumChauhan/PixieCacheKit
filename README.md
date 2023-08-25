@@ -52,7 +52,7 @@ import PixieCacheKit
 struct MyApp: App {
     init() {
         // Configure to use a custom directory for file-based image caching.
-        PixieCacheKit.configure(directoryName: "MyAppCache")
+        PixieCacheKit.configure(directoryName: "MyAppCache", imageFormat: .jpeg)
       
         // OR 
       

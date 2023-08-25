@@ -23,7 +23,8 @@ public class CacheManager {
     
     ///  The name of the cache directory used by PixieCacheKit for file-based image caching.
     public var cacheDirectoryName = "PixieImageCache"
-    
+    public var imageFormat: ImageFormat = .jpeg
+
     /// Create a directory if it doesn't exist at the specified path.
     public func createCacheDirectory() {
         // Directory path.
@@ -50,7 +51,7 @@ public class CacheManager {
     private func getImagePath(key: String) -> URL? {
         guard let cacheURL = getCacheDirectoryPath() else { return nil }
         
-        return cacheURL.appendingPathComponent(key + ".jpeg")
+        return cacheURL.appendingPathComponent(key + imageFormat.rawValue)
     }
     
     /// Append an image in the specified directory with the given key(name).
