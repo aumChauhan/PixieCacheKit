@@ -3,6 +3,8 @@
 
 Simplify image caching with PixieCacheKit.
 
+#### Latest release: August 25, 2023 - [v1.1.0](https://github.com/aum-chauhan-175/PixieCacheKit/releases/tag/1.1.0)
+
 ## Features
 
 - **Flexible Caching Options:** Choose between memory-based caching or file-based caching, adapting to your app requirements.
