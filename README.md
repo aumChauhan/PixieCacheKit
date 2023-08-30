@@ -3,7 +3,11 @@
 
 Simplify image caching with PixieCacheKit.
 
-#### Latest release: August 25, 2023 - [v1.1.0](https://github.com/aum-chauhan-175/PixieCacheKit/releases/tag/1.1.0)
+## Description
+PixieCacheKit offers advanced async/await integration for downloading images from URLs, intelligently storing them in either the File Manager for persistence or NSCache memory for quick access. 
+
+## Latest release
+August 25, 2023 - [v1.1.0](https://github.com/aum-chauhan-175/PixieCacheKit/releases/tag/1.1.0)
 
 ## Features
 
