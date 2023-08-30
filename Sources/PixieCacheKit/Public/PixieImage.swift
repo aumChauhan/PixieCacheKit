@@ -38,6 +38,7 @@ public struct PixieImage<Placeholder>: View where Placeholder : View {
     }
     
     public var body: some View {
+        
         if viewModel.isLoading {
             if let placeholder {
                 // Placeholder view.
@@ -55,5 +56,6 @@ public struct PixieImage<Placeholder>: View where Placeholder : View {
             Image(systemName: "exclamationmark.triangle.fill")
                 .foregroundColor(.gray)
         }
+        
     }
 }
