@@ -38,24 +38,22 @@ public struct PixieImage<Placeholder>: View where Placeholder : View {
     }
     
     public var body: some View {
-        ZStack {
-            if viewModel.isLoading {
-                if let placeholder {
-                    // Placeholder view.
-                    placeholder
-                } else {
-                    // Default placeholder
-                    ProgressView()
-                }
-            } else if let image = viewModel.image {
-                // Downloaded image
-                Image(uiImage: image)
-                    .resizable()
+        if viewModel.isLoading {
+            if let placeholder {
+                // Placeholder view.
+                placeholder
             } else {
-                // Exception
-                Image(systemName: "exclamationmark.triangle.fill")
-                    .foregroundColor(.gray)
+                // Default placeholder
+                ProgressView()
             }
+        } else if let image = viewModel.image {
+            // Downloaded image
+            Image(uiImage: image)
+                .resizable()
+        } else {
+            // Exception
+            Image(systemName: "exclamationmark.triangle.fill")
+                .foregroundColor(.gray)
         }
     }
 }
