@@ -7,7 +7,7 @@ Simplify image caching with PixieCacheKit.
 PixieCacheKit offers advanced async/await integration for downloading images from URLs, intelligently storing them in either the File Manager for persistence or NSCache memory for quick access. 
 
 ## Latest release
-August 30, 2023 - [v1.1.1](https://github.com/aum-chauhan-175/PixieCacheKit/releases/tag/1.1.1)
+September 10, 2023 - [v1.1.2](https://github.com/aum-chauhan-175/PixieCacheKit/releases/tag/1.1.2)
 
 ## Features
 
@@ -121,16 +121,10 @@ PixieCacheKit provides a function to disable debug prints during the image downl
 ```swift
 struct MyApp: App {
     init() {
-        PixieCacheKit.configure(directoryName: "MyAppCache")
+        PixieCacheKit.configure(directoryName: "MyAppCache", imageFormat: .jpeg)
         
         // Disable debug prints
         PixieCacheKit.disableDebugPrints()
-    }
-
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
     }
 }
 ```
