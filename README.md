@@ -1,4 +1,4 @@
-![IconForReadMeFile](https://github.com/aum-chauhan-175/PixieCacheKit/assets/83302656/7803d6bb-3890-4d01-bdde-5045994d03d4)
+![IconForReadMeFile](https://github.com/aumChauhan/PixieCacheKit/assets/83302656/7803d6bb-3890-4d01-bdde-5045994d03d4)
 # PixieCacheKit
 
 Simplify image caching with PixieCacheKit.
@@ -7,7 +7,7 @@ Simplify image caching with PixieCacheKit.
 PixieCacheKit offers advanced async/await integration for downloading images from URLs, intelligently storing them in either the File Manager for persistence or NSCache memory for quick access. 
 
 ## Latest release
-September 10, 2023 - [v1.1.2](https://github.com/aum-chauhan-175/PixieCacheKit/releases/tag/1.1.2)
+September 10, 2023 - [v1.1.3](https://github.com/aumChauhan/PixieCacheKit/releases/tag/1.1.3)
 
 ## Features
 
@@ -41,7 +41,7 @@ Then run `pod install` to install the framework.
 In Xcode, go to File -> Swift Packages -> Add Package Dependency and enter the repository URL:
 
 ```other
-https://github.com/aum-chauhan-175/PixieCacheKit.git
+https://github.com/aumChauhan/PixieCacheKit.git
 ```
 
 ## Getting Started

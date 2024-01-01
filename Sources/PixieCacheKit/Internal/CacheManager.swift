@@ -2,7 +2,7 @@
 //
 //  Author: Aum Chauhan
 //  Date: 20/8/2023
-//  GitHub: https://github.com/aum-chauhan-175
+//  GitHub: https://github.com/aumChauhan
 
 import Foundation
 import SwiftUI
