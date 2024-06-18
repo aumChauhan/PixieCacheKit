@@ -87,7 +87,6 @@ internal class CacheManager {
         }
     }
     
-    
     /// Retrieves an image from the cache directory.
     ///
     /// - Parameter key: Unique identifier for the cached image.
@@ -133,7 +132,7 @@ internal class CacheManager {
     /// Calculates the total size of the cache directory.
     ///
     /// - Returns: Size of the cache directory in bytes.
-    internal func getCacheDirectorySize() -> Int {
+    func getCacheDirectorySize() -> Int {
         guard let cacheURL = getCacheDirectoryPath() else { return 0 }
         
         do {
@@ -189,4 +188,3 @@ internal class CacheManager {
         debugPrint = false
     }
 }
-
