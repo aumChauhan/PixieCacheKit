@@ -8,14 +8,17 @@
 
 import Foundation
 
-/// Enum representing different storage options for images in PixieCacheKit.
+/// Represents a different storage options for images in PixieCacheKit.
+///
+/// - Note: Use `memory` for storing images in NSCache for quick access and reduced load times,
+///   suitable for frequently accessed or smaller images. Use `fileManager` for larger images
+///   or less frequently accessed images, storing them in the file manager's cache directory
+///   for persistent storage.
 @available(iOS 15.0, *)
 @frozen public enum ImageStorageLocation {
-    /// Store the image in memory using NSCache for quick access and reduced load times.
-    /// Recommended for frequently accessed images or smaller images that can fit in memory.
+    /// Store images in NSCache for fast access.
     case memory
     
-    /// Store the image in the file manager's cache directory for persistent storage.
-    /// Recommended for larger images or less frequently accessed images.
+    /// Store images in the file manager's cache directory for persistent storage.
     case fileManager
 }

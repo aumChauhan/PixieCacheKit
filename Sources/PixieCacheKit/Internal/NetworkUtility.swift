@@ -9,14 +9,18 @@
 import Foundation
 import SwiftUI
 
-/// A utility class for handling network-related operations within PixieCacheKit.
+/// Handles network-related operations within PixieCacheKit.
 @available(iOS 15.0, *)
 internal class NetworkUtility {
     private init() {}
     
     static let shared = NetworkUtility()
     
-    /// Asynchronously download an image from a URL.
+    /// Asynchronously downloads an image from a URL.
+    ///
+    /// - Parameter urlString: The URL string from which to download the image.
+    /// - Returns: A `UIImage` object representing the downloaded image.
+    /// - Throws: An error if the URL is invalid or if there's an issue with downloading or decoding the image data.
     func asyncImageDownload(urlString: String) async throws -> UIImage {
         guard let url = URL(string: urlString) else {
             throw URLError(.badURL)

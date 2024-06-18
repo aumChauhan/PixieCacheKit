@@ -9,6 +9,7 @@
 import Foundation
 import SwiftUI
 
+/// Manages caching and retrieval of images.
 @available(iOS 15.0, *)
 internal class CacheManager {
     
@@ -17,21 +18,27 @@ internal class CacheManager {
     // MARK: - Properties
     
     static let shared = CacheManager()
+    
+    /// Format for cached images.
+    var imageFormat: ImageFormat = .jpeg
+    
+    /// Storage location for images.
     var storageLocation: ImageStorageLocation = .fileManager
     
     /// Describes the status of debug prints is enabled or disabled.
     var debugPrint: Bool = true
     
-    ///  The name of the cache directory used by PixieCacheKit for file-based image caching.
+    /// Name of the cache directory used for file-based image caching.
     var cacheDirectoryName = "PixieImageCache"
-    var imageFormat: ImageFormat = .jpeg
     
-    /// Initialize maximum memory capacity allocated for cache images.
+    /// Maximum memory capacity allocated for caching images.
     static var memoryLimit: Int = 50
-        
+    
     // MARK: - File Manager Handling
-
+    
     /// Create a directory if it doesn't exist at the specified path.
+    ///
+    /// - Note: Uses the caches directory for storage.
     func createCacheDirectory() {
         guard let cacheURL = getCacheDirectoryPath() else { return }
         
@@ -45,6 +52,8 @@ internal class CacheManager {
     }
     
     /// Returns the absolute file path of cached directory.
+    ///
+    /// - Returns: `URL` representing the cache directory path.
     private func getCacheDirectoryPath() -> URL? {
         return FileManager.default
             .urls(for: .cachesDirectory, in: .userDomainMask)
@@ -52,14 +61,21 @@ internal class CacheManager {
             .appendingPathComponent(cacheDirectoryName)
     }
     
-    /// Retrieves the file path for a cached image identified by the provided key.
+    /// Retrieves the file path for a cached image.
+    ///
+    /// - Parameter key: Unique identifier for the cached image.
+    /// - Returns: URL representing the file path of the cached image.
     private func getImagePath(key: String) -> URL? {
         guard let cacheURL = getCacheDirectoryPath() else { return nil }
         
         return cacheURL.appendingPathComponent(key + imageFormat.rawValue)
     }
     
-    /// Append an image in the specified directory with the given key(name).
+    /// Appends an image to the cache directory.
+    ///
+    /// - Parameters:
+    ///   - image: Image to be cached.
+    ///   - key: Unique identifier for the cached image.
     func appendImageToCacheDirectory(image: UIImage, key: String) {
         guard let data = image.pngData(),
               let cacheURL = getImagePath(key: key) else { return }
@@ -71,7 +87,11 @@ internal class CacheManager {
         }
     }
     
-    /// Retrieve an image from specified directory.
+    
+    /// Retrieves an image from the cache directory.
+    ///
+    /// - Parameter key: Unique identifier for the cached image.
+    /// - Returns: UIImage object if image exists, otherwise nil.
     func getImageFromCacheDirectory(key: String) -> UIImage? {
         guard
             let cacheURL = getImagePath(key: key),
@@ -87,7 +107,7 @@ internal class CacheManager {
     
     // MARK: - Cache Management Functions
     
-    /// Remove all cached data from the cache directory.
+    /// Removes all cached data from the cache directory.
     func clearCacheData() {
         do {
             guard let cacheURL = getCacheDirectoryPath() else {
@@ -110,7 +130,9 @@ internal class CacheManager {
         }
     }
     
-    /// Calculate and return the total size of the cache directory in `bytes`.
+    /// Calculates the total size of the cache directory.
+    ///
+    /// - Returns: Size of the cache directory in bytes.
     internal func getCacheDirectorySize() -> Int {
         guard let cacheURL = getCacheDirectoryPath() else { return 0 }
         
@@ -133,7 +155,7 @@ internal class CacheManager {
             return 0
         }
     }
-  
+    
     // MARK: - NSCache Memory Management
     
     private var imageCache: NSCache<NSString, UIImage> = {
@@ -143,20 +165,28 @@ internal class CacheManager {
         return cache
     }()
     
-    /// Cache an image in NSCache using the specified key.
+    /// Caches an image in NSCache using the specified key.
+    ///
+    /// - Parameters:
+    ///   - image: Image to be cached.
+    ///   - key: Unique identifier for the cached image.
     func addCachedImage(image: UIImage, key: String) {
         imageCache.setObject(image, forKey: key as NSString)
     }
     
-    /// Retrieve a cached image from NSCache based on the provided key.
+    /// Retrieves a cached image from NSCache based on the provided key.
+    ///
+    /// - Parameter key: Unique identifier for the cached image.
+    /// - Returns: Cached UIImage object if exists, otherwise nil.
     func getCachedImage(key: String) -> UIImage? {
         return imageCache.object(forKey: key as NSString)
     }
     
     // MARK: - Utility
-    /// Disable debug prints during image downloading and retrieval.
+    
+    /// Disables debug prints during image downloading and retrieval.
     func disableDebugPrint() {
-        self.debugPrint = false
+        debugPrint = false
     }
 }
 

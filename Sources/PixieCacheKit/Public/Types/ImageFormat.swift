@@ -8,12 +8,12 @@
 
 import Foundation
 
-/// Enumeration representing supported image formats in PixieCacheKit.
+/// Represents supported image formats in PixieCacheKit.
 @available(iOS 15.0, *)
 @frozen public enum ImageFormat: String {
-    /// `jpeg` stores images in .jpeg format.
+    /// Stores images in JPEG format.
     case jpeg = ".jpeg"
     
-    /// `png` stores images in .png format.
+    /// Stores images in PNG format.
     case png = ".png"
 }

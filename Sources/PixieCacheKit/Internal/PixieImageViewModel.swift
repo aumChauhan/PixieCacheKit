@@ -10,6 +10,7 @@ import UIKit
 import SwiftUI
 import Foundation
 
+/// Manages image fetching and caching operations.
 @available(iOS 15.0, *)
 @MainActor internal class PixieImageViewModel: ObservableObject {
     
@@ -18,7 +19,10 @@ import Foundation
     private let urlString: String
     private let imageKey: String
     
+    /// The fetched image, if available.
     @Published var image: UIImage? = nil
+    
+    /// Indicates whether the image is currently being fetched.
     @Published var isLoading: Bool = false
     
     // MARK: - Initializer
