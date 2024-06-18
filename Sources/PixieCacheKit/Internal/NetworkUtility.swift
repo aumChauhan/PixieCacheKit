@@ -9,14 +9,13 @@ import SwiftUI
 
 /// A utility class for handling network-related operations within PixieCacheKit.
 @available(iOS 15.0, *)
-public class NetworkUtility {
+internal class NetworkUtility {
+    private init() {}
     
-    private init() { }
-    
-    public static let shared = NetworkUtility()
+    static let shared = NetworkUtility()
     
     /// Asynchronously download an image from a URL.
-    public func asyncImageDownload(urlString: String) async throws -> UIImage {
+    func asyncImageDownload(urlString: String) async throws -> UIImage {
         guard let url = URL(string: urlString) else {
             throw URLError(.badURL)
         }
@@ -26,7 +25,7 @@ public class NetworkUtility {
         guard let data else {
             throw URLError(.cannotDecodeRawData)
         }
-
+        
         guard let image = UIImage(data: data.0) else {
             throw URLError(.cannotDecodeRawData)
         }

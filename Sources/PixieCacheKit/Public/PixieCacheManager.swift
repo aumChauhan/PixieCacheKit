@@ -14,7 +14,7 @@ public struct PixieCacheManager {
     ///
     /// - The `clearCacheData()` function deletes all cached images and data from the cache directory
     /// within PixieCacheKit. Use this function to free up storage space or perform cache cleanup.
-    public static func clearCacheData() {
+    static func clearCacheData() {
         CacheManager.shared.clearCacheData()
     }
     
@@ -25,7 +25,7 @@ public struct PixieCacheManager {
     /// This function can be useful for monitoring cache usage or performing cache management tasks.
     ///
     /// - Returns: The total size of the cache directory in bytes.
-    public static func getCacheDirectorySize() -> Int {
+    static func getCacheDirectorySize() -> Int {
         return CacheManager.shared.getCacheDirectorySize()
     }
 }

@@ -8,20 +8,10 @@ import Foundation
 import SwiftUI
 import UIKit
 
-/// Enum representing different storage options for images in PixieCacheKit.
-public enum ImageStorageLocation {
-    /// Store the image in memory using NSCache for quick access and reduced load times.
-    /// Recommended for frequently accessed images or smaller images that can fit in memory.
-    case memory
-    
-    /// Store the image in the file manager's cache directory for persistent storage.
-    /// Recommended for larger images or less frequently accessed images.
-    case fileManager
-}
-
-@MainActor
 @available(iOS 15.0, *)
-public class PixieImageViewModel: ObservableObject {
+@MainActor internal class PixieImageViewModel: ObservableObject {
+    
+    // MARK: - Properties
     
     private let urlString: String
     private let imageKey: String
@@ -29,12 +19,15 @@ public class PixieImageViewModel: ObservableObject {
     @Published var image: UIImage? = nil
     @Published var isLoading: Bool = false
     
+    // MARK: - Initializer
+    
     init(url: String, key: String) {
         urlString = url
         imageKey = key
-        
         getImage()
     }
+    
+    // MARK: - Image Handling
     
     /// Retrieve a cached image on basis of storage location.
     private func getImage() {

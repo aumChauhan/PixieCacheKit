@@ -19,43 +19,42 @@ import SwiftUI
 @available(iOS 15.0, *)
 public struct PixieImage<Placeholder>: View where Placeholder : View {
     
-    public let placeholder: Placeholder?
+    // MARK: - Properties
     
+    let placeholder: Placeholder?
     @StateObject private var viewModel : PixieImageViewModel
+    
+    // MARK: - Initializers
     
     /// Use the `PixieImage` view by initializing it with the image URL and a cache key. This view
     /// handles the image fetching and display process while utilizing caching to optimize performance.
-    public init(_ urlString: String, cacheKey: String) where Placeholder == EmptyView  {
+    init(_ urlString: String, cacheKey: String) where Placeholder == EmptyView  {
         _viewModel = StateObject(wrappedValue: PixieImageViewModel(url: urlString, key: cacheKey))
         self.placeholder = nil
     }
     
     /// Use the `PixieImage` view by initializing it with the image URL, a cache key, and a
     /// placeholder view. While the image is being fetched, the placeholder view is displayed.
-    public init(_ urlString: String, cacheKey: String, @ViewBuilder placeholder: () -> Placeholder?) {
+    init(_ urlString: String, cacheKey: String, @ViewBuilder placeholder: () -> Placeholder?) {
         _viewModel = StateObject(wrappedValue: PixieImageViewModel(url: urlString, key: cacheKey))
         self.placeholder = placeholder()
     }
     
+    // MARK: - View Body
+    
     public var body: some View {
-        
         if viewModel.isLoading {
             if let placeholder {
-                // Placeholder view.
                 placeholder
             } else {
-                // Default placeholder
                 ProgressView()
             }
         } else if let image = viewModel.image {
-            // Downloaded image
             Image(uiImage: image)
                 .resizable()
         } else {
-            // Exception
             Image(systemName: "exclamationmark.triangle.fill")
                 .foregroundColor(.gray)
         }
-        
     }
 }

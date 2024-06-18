@@ -8,26 +8,29 @@ import Foundation
 import SwiftUI
 
 @available(iOS 15.0, *)
-public class CacheManager {
+internal class CacheManager {
     
     private init() { }
     
-    public static let shared = CacheManager()
+    // MARK: - Properties
     
-    public var storageLocation: ImageStorageLocation = .fileManager
+    static let shared = CacheManager()
+    var storageLocation: ImageStorageLocation = .fileManager
     
-    /// Describes the status of debug prints.
-    public var debugPrint: Bool = true
-    
-    // MARK: - File Manager
+    /// Describes the status of debug prints is enabled or disabled.
+    var debugPrint: Bool = true
     
     ///  The name of the cache directory used by PixieCacheKit for file-based image caching.
-    public var cacheDirectoryName = "PixieImageCache"
-    public var imageFormat: ImageFormat = .jpeg
+    var cacheDirectoryName = "PixieImageCache"
+    var imageFormat: ImageFormat = .jpeg
+    
+    /// Initialize maximum memory capacity allocated for cache images.
+    static var memoryLimit: Int = 50
+        
+    // MARK: - File Manager Handling
 
     /// Create a directory if it doesn't exist at the specified path.
-    public func createCacheDirectory() {
-        // Directory path.
+    func createCacheDirectory() {
         guard let cacheURL = getCacheDirectoryPath() else { return }
         
         if !FileManager.default.fileExists(atPath: cacheURL.path) {
@@ -55,7 +58,7 @@ public class CacheManager {
     }
     
     /// Append an image in the specified directory with the given key(name).
-    public func appendImageToCacheDirectory(image: UIImage, key: String) {
+    func appendImageToCacheDirectory(image: UIImage, key: String) {
         guard let data = image.pngData(),
               let cacheURL = getImagePath(key: key) else { return }
         
@@ -67,7 +70,7 @@ public class CacheManager {
     }
     
     /// Retrieve an image from specified directory.
-    public func getImageFromCacheDirectory(key: String) -> UIImage? {
+    func getImageFromCacheDirectory(key: String) -> UIImage? {
         guard
             let cacheURL = getImagePath(key: key),
             FileManager.default
@@ -80,8 +83,10 @@ public class CacheManager {
         return UIImage(contentsOfFile: cacheURL.path)
     }
     
+    // MARK: - Cache Management Functions
+    
     /// Remove all cached data from the cache directory.
-    public func clearCacheData() {
+    func clearCacheData() {
         do {
             guard let cacheURL = getCacheDirectoryPath() else {
                 throw URLError(.cancelled)
@@ -103,8 +108,8 @@ public class CacheManager {
         }
     }
     
-    /// Calculate and return the total size of the cache directory in bytes.
-    public func getCacheDirectorySize() -> Int {
+    /// Calculate and return the total size of the cache directory in `bytes`.
+    internal func getCacheDirectorySize() -> Int {
         guard let cacheURL = getCacheDirectoryPath() else { return 0 }
         
         do {
@@ -126,16 +131,8 @@ public class CacheManager {
             return 0
         }
     }
-    
-    /// Disable debug prints during image downloading and retrieval.
-    public func disableDebugPrint() {
-        self.debugPrint = false
-    }
-    
-    // MARK: - Memory
-    
-    /// Initialize maximum memory capacity allocated for cache images.
-    public static var memoryLimit: Int = 50
+  
+    // MARK: - NSCache Memory Management
     
     private var imageCache: NSCache<NSString, UIImage> = {
         var cache = NSCache<NSString, UIImage>()
@@ -145,13 +142,19 @@ public class CacheManager {
     }()
     
     /// Cache an image in NSCache using the specified key.
-    public func addCachedImage(image: UIImage, key: String) {
+    func addCachedImage(image: UIImage, key: String) {
         imageCache.setObject(image, forKey: key as NSString)
     }
     
     /// Retrieve a cached image from NSCache based on the provided key.
-    public func getCachedImage(key: String) -> UIImage? {
+    func getCachedImage(key: String) -> UIImage? {
         return imageCache.object(forKey: key as NSString)
+    }
+    
+    // MARK: - Utility
+    /// Disable debug prints during image downloading and retrieval.
+    func disableDebugPrint() {
+        self.debugPrint = false
     }
 }
 
