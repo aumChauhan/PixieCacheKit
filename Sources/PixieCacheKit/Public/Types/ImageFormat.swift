@@ -1,8 +1,10 @@
-//  ImageFormat.swift
 //
-//  Author: Aum Chauhan
-//  Date: 25/8/2023
-//  GitHub: https://github.com/aumChauhan
+// ImageFormat.swift
+// PixieCacheKit: https://github.com/aumChauhan/PixieCacheKit.git
+//
+// Author: Aum Chauhan
+// Created On: 25/8/2023
+//
 
 import Foundation
 

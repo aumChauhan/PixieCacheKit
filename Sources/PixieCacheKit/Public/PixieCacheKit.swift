@@ -1,20 +1,22 @@
-//  PixieCacheKit.swift
 //
-//  Author: Aum Chauhan
-//  Date: 20/8/2023
-//  GitHub: https://github.com/aumChauhan
+// PixieCacheKit.swift
+// PixieCacheKit: https://github.com/aumChauhan/PixieCacheKit.git
+//
+// Author: Aum Chauhan
+// Created On: 20/8/2023
+//
 
 import Foundation
 
 @available(iOS 15.0, *)
-public struct PixieCacheKit {
-    private init() { }
+public class PixieCacheKit {
+    private init() {}
     
     /// Configure PixieCacheKit to use a custom directory for file-based image caching.
     /// - Parameters:
     ///   - directoryName: The name of the custom cache directory.
     ///   - imageFormat: Choose the image format (`.jpeg` & `.png`) for file manager caching.
-    public static func configure(directoryName: String, imageFormat: ImageFormat) {
+    static func configure(directoryName: String, imageFormat: ImageFormat) {
         // Configuring directory name
         CacheManager.shared.cacheDirectoryName = directoryName
         
@@ -31,7 +33,7 @@ public struct PixieCacheKit {
     
     /// Configure PixieCacheKit to use a specific memory limit for image caching.
     /// - Parameter memoryLimit: The maximum memory limit for image caching in megabytes.
-    public static func configure(memoryLimit: Int) {
+    static func configure(memoryLimit: Int) {
         // Configuring storage location.
         CacheManager.shared.storageLocation = .memory
         
@@ -46,7 +48,7 @@ public struct PixieCacheKit {
     /// The `disableDebugPrints()` function allows you to suppress debug print statements
     /// specifically during the process of image downloading and retrieval. This can help
     /// improve code clarity and reduce unnecessary output in your app's logs.
-    public static func disableDebugPrints() {
+    static func disableDebugPrints() {
         CacheManager.shared.disableDebugPrint()
     }
 }

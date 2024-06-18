@@ -1,8 +1,10 @@
-//  ImageStorageLocation.swift
 //
-//  Author: Aum Chauhan
-//  Date: 25/8/2023
-//  GitHub: https://github.com/aumChauhan
+// ImageStorageLocation.swift
+// PixieCacheKit: https://github.com/aumChauhan/PixieCacheKit.git
+//
+// Author: Aum Chauhan
+// Created On: 18/6/2024
+//
 
 import Foundation
 

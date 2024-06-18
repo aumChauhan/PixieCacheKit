@@ -1,8 +1,10 @@
-//  PixieImage.swift
 //
-//  Author: Aum Chauhan
-//  Date: 20/8/2023
-//  GitHub: https://github.com/aumChauhan
+// PixieImage.swift
+// PixieCacheKit: https://github.com/aumChauhan/PixieCacheKit.git
+//
+// Author: Aum Chauhan
+// Created On: 20/8/2023
+//
 
 import SwiftUI
 

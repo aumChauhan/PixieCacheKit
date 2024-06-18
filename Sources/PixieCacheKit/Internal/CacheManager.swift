@@ -1,8 +1,10 @@
-//  CacheManager.swift
 //
-//  Author: Aum Chauhan
-//  Date: 20/8/2023
-//  GitHub: https://github.com/aumChauhan
+// CacheManager.swift
+// PixieCacheKit: https://github.com/aumChauhan/PixieCacheKit.git
+//
+// Author: Aum Chauhan
+// Created On: 20/8/2023
+//
 
 import Foundation
 import SwiftUI

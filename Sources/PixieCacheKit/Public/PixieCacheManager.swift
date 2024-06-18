@@ -1,14 +1,16 @@
-//  PixieCacheManager.swift
 //
-//  Author: Aum Chauhan
-//  Date: 20/8/2023
-//  GitHub: https://github.com/aumChauhan
+// PixieCacheManager.swift
+// PixieCacheKit: https://github.com/aumChauhan/PixieCacheKit.git
+//
+// Author: Aum Chauhan
+// Created On: 20/8/2023
+//
 
 import Foundation
 
 @available(iOS 15.0, *)
-public struct PixieCacheManager {
-    private init() { }
+public class PixieCacheManager {
+    private init() {}
     
     /// Remove all images from the cache directory.
     ///
